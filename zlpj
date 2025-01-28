@@ -1,8 +1,34 @@
 Resources:
-  myVPC:
+  zlVPC:
     Type: AWS::EC2::VPC
     Properties:
       CidrBlock: 10.0.0.0/16
       Tags:
       - Key: Name
         Value: zl-vpc-01
+
+  zlIGW:
+      Type: AWS::EC2::InternetGateway
+      Properties:
+        Tags:
+        - Key: Name
+          Value: zligw-0707
+
+  AttachGateway:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId:
+        Ref: zlVPC
+      InternetGatewayId:
+        Ref: zlIGW 
+
+  zlSubnetpub1a:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: zlVPC
+      CidrBlock: 10.0.0.0/24
+      AvailabilityZone: "ap-northeast-1a"
+      Tags:
+      - Key: Name
+        Value: zl-subnet-pub1a           
