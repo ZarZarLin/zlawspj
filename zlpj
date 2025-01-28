@@ -31,4 +31,13 @@ Resources:
       AvailabilityZone: "ap-northeast-1a"
       Tags:
       - Key: Name
-        Value: zl-subnet-pub1a           
+        Value: zl-subnet-pub1a   
+
+  zlRouteTablePub:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId:  
+        Ref: zlVPC
+      Tags:
+      - Key: Name
+        Value: zl-pubrtb-01       
